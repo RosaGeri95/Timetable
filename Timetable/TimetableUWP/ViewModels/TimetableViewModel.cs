@@ -1,6 +1,7 @@
 ﻿using System;
 
 using TimetableUWP.Helpers;
+using TimetableInterfaces.Models;
 
 namespace TimetableUWP.ViewModels
 {
@@ -8,6 +9,8 @@ namespace TimetableUWP.ViewModels
     {
         public TimetableViewModel()
         {
+
+         
         }
         
     }

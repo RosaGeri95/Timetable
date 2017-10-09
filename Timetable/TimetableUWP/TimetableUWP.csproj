@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
@@ -219,6 +219,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimetableInterfaces\TimetableInterfaces.csproj">
+      <Project>{4217c3a9-9d49-4e62-97b2-e468502783b3}</Project>
+      <Name>TimetableInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimetableMockService\TimetableMockService.csproj">
+      <Project>{5a8d8f0a-f822-418f-a782-e531e19c22b1}</Project>
+      <Name>TimetableMockService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
