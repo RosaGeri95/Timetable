@@ -11,6 +11,10 @@ namespace TimetableInterfaces.Models
 
         public int EventId { get; set; }
 
+        //Ezt azért vettem fel, hogy tudjuk melyik felhasználóhoz tartozik az event
+        //A MockCalendarService listEvents függvényéhez kell
+        public User EventOwner { get; set; }
+
         public string EventName
         {
             get
@@ -53,5 +57,17 @@ namespace TimetableInterfaces.Models
         }
         public Category Category { get; set; }
         public List<EventDate> EventDates { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Event other = (Event) obj;
+            return this.EventId == other.EventId;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

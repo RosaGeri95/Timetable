@@ -9,6 +9,13 @@ namespace TimetableInterfaces.Models
         private string username;
         private string password;
 
+        public User(string username, string password, DateTime psd )
+        {
+            this.Username = username;
+            this.Password = password;
+            this.ParitySourceDate = psd;
+        }
+
         public string Username
         {
             get
@@ -54,10 +61,18 @@ namespace TimetableInterfaces.Models
                 }
             }
         }
-
-
         public DateTime ParitySourceDate { get; set; }
-        
+
+        public override bool Equals(object obj)
+        {
+            User other = (User)obj;
+            return this.username == other.username;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
 
