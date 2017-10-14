@@ -8,8 +8,8 @@ namespace TimetableMockService.MockServices
 {
     public class MockCalendarService : ICalendarService
     {
-        public IList<Event> Events { get;}
-        public IList<User> Users { get; }
+        public List<Event> Events { get; }
+        public List<User> Users { get;  }
 
         public User CurrentUser { get; set; }
 
@@ -24,7 +24,9 @@ namespace TimetableMockService.MockServices
         private void FillCalendarWithDummyEvents()
         {
             //Users
-            this.AddUser(new User("Gergely", "pw123", new DateTime()));
+            User geri = new User("Gergely", "pw123", new DateTime());
+            this.AddUser(geri);
+            CurrentUser = geri;
             this.AddUser(new User("Adrian", "pw789", new DateTime()));
 
             //Categories
@@ -120,6 +122,7 @@ namespace TimetableMockService.MockServices
                 return false;
             }
             Events.Add(e);
+            
             return true;
         }
 
@@ -135,26 +138,22 @@ namespace TimetableMockService.MockServices
 
         public bool DeleteEvent(int event_id)
         {
-            foreach(Event e in Events)
+            int deletedItems = Events.RemoveAll(x => (x.EventId == event_id) );
+            if(deletedItems > 0)
             {
-                if(e.EventId == event_id)
-                {
-                    Events.Remove(e);
-                    return true;
-                }
+                return true;
             }
             return false;
         }
 
         public bool DeleteUser(string userName)
         {
-            foreach (User u in Users)
+            Events.RemoveAll(x => (x.EventOwner.Username == userName) );
+
+            int deletedUser = Users.RemoveAll(y => (y.Username == userName) );
+            if(deletedUser > 0)
             {
-                if (u.Username == userName)
-                {
-                    Users.Remove(u);
-                    return true;
-                }
+                return true;
             }
             return false;
         }
@@ -208,17 +207,45 @@ namespace TimetableMockService.MockServices
             return false;
         }
 
-        public User UserLogin(string userName, string password)
+        public bool UserLogin(string userName, string password)
         {
             foreach(User user in Users)
             {
                 if( (user.Username == userName) && (user.Password == password) )
                 {
                     CurrentUser = user;
-                    return CurrentUser;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
+
+        //***********************************
+        //------ teszteléshez kellenek ------
+        //***********************************
+        public User GetUser(string username)
+        {
+            foreach(User user in Users)
+            {
+                if(user.Username == username)
+                {
+                    return user;
+                }
+            }
+            throw new Exception("User not found");
+        }
+
+        public Event GetEvent(int event_id)
+        {
+            foreach(Event e in Events)
+            {
+                if(e.EventId == event_id)
+                {
+                    return e;
+                }
+            }
+            throw new Exception("Event not found");
+        }
+        
     }
 }

@@ -52,7 +52,7 @@ namespace TimetableService.Service
             throw new NotImplementedException();
         }
 
-        public User UserLogin(string userName, string password)
+        public bool UserLogin(string userName, string password)
         {
             throw new NotImplementedException();
         }
