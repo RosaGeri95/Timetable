@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TimetableInterfaces.Interfaces;
 using TimetableInterfaces.Models;
@@ -180,29 +181,46 @@ namespace TimetableMockService.MockServices
 
         public bool ModifyEvent(Event e)
         {
-            foreach(Event evt in Events)
+            int found = 0;
+            foreach(Event esemeny in Events)
             {
-                //ID-jukat hasonlítja össze (Equals() metódus)
-                if (evt  == e)
+                if(esemeny.EventId == e.EventId)
                 {
-                    Events.Remove(evt);
-                    Events.Add(e);
-                    return true;
+                    found++;
                 }
+            }
+            if(found == 0) { return false; }
+
+            Event evt = Events.First(x => (x.EventId == e.EventId));
+            var index = Events.IndexOf(evt);
+
+            if(index != -1)
+            {
+                Events[index] = e;
+                return true;
             }
             return false;
         }
 
         public bool ModifyUser(User u)
         {
-            foreach(User user in Users)
+            int found = 0;
+            foreach (User user in Users)
             {
-                if(user == u)
+                if (user.Username == u.Username)
                 {
-                    Users.Remove(user);
-                    Users.Add(u);
-                    return true;
+                    found++;
                 }
+            }
+            if (found == 0) { return false; }
+
+            User usr = Users.First(x => (x.Username == u.Username));
+            var index = Users.IndexOf(usr);
+
+            if (index != -1)
+            {
+                Users[index] = u;
+                return true;
             }
             return false;
         }

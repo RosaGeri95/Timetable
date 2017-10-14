@@ -122,6 +122,21 @@ namespace Teszt
                 Console.WriteLine("Témalabor event cserelve!");
             }
 
+            //másik létező event
+            List<EventDate> edates = new List<EventDate>();
+            edates.Add(newDate);
+            Event esemeny = new Event(
+                0, mcs.Users[0], "sznikák", "design patterns", "IB08",
+                3, new Category(7,"Ismeretlen", 55), edates
+                );
+            if (mcs.ModifyEvent(esemeny))
+            {
+                Console.WriteLine("esemeny cserelve!");
+            }
+
+
+
+
             //nem létező event
             Event e2 = new Event(28, mcs.GetUser("Gergely"),
                 "P", "kiprobalasra", "Ib225", 1, new Category(53, "V", 6),
@@ -132,7 +147,7 @@ namespace Teszt
             }
 
 
-            //------------- User módsítás---------
+            //------------- User módosítás---------
             //létező felhasználó
             User u1 = mcs.GetUser("Gergely");
             u1.Password = "asd123";
@@ -146,10 +161,16 @@ namespace Teszt
             {
                 Console.WriteLine("Jani felhasználó nem létezik");
             }
+            //másik létező felhasználó módosítása
+            User u3 = new User("Peti", "xsxsxs", new DateTime());
+            if (mcs.ModifyUser(u3))
+            {
+                Console.WriteLine("Peti jelszava megváltozott");
+            }
 
             //--------LOGIN ---------------
             //létező felhasználó és jelszó
-           if(mcs.UserLogin("Gergely", "asd123"))
+            if (mcs.UserLogin("Gergely", "asd123"))
             {
                 Console.WriteLine("Gergely logged in");
             }

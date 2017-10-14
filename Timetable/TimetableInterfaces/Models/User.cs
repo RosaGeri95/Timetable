@@ -75,7 +75,7 @@ namespace TimetableInterfaces.Models
         }
         public override string ToString()
         {
-            return Username;
+            return Username + " " + Password;
         }
     }
 }
