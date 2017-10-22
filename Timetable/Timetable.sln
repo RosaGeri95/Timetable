@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableUWP", "TimetableUWP\TimetableUWP.csproj", "{5B97F457-665D-457C-9F73-7C6516060B2B}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableMockService", "TimetableMockService\TimetableMockService.csproj", "{5A8D8F0A-F822-418F-A782-E531E19C22B1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableService", "TimetableService\TimetableService.csproj", "{BD411F8D-1408-4976-BD94-F82293AA89E9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableASP", "TimetableASP\TimetableASP\TimetableASP.csproj", "{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,22 +91,6 @@ Global
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Release|x64.Build.0 = Release|Any CPU
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Release|x86.Build.0 = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|ARM.Build.0 = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|x64.Build.0 = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Debug|x86.Build.0 = Debug|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|ARM.ActiveCfg = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|ARM.Build.0 = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|x64.ActiveCfg = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|x64.Build.0 = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|x86.ActiveCfg = Release|Any CPU
-		{5AE797F5-ECE7-4544-AFB5-363C8BBBFDE7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
