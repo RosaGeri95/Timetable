@@ -4,27 +4,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local = "clr-namespace:TimetableUWP.ViewModels"
+    xmlns:data ="using:TimetableInterfaces.Models;assembly=TimetableInterfaces"
     mc:Ignorable="d">
-    <Grid
+
+    <StackPanel
         x:Name="ContentArea"
-        Margin="{StaticResource MediumLeftRightMargin}">
+        Orientation="Vertical">
 
-        <Grid.RowDefinitions>
-            <RowDefinition x:Name="TitleRow" Height="48"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock
+        <StackPanel Orientation="Horizontal">
+            <TextBlock
             x:Name="TitlePage"
             x:Uid="Timetable_Title"
-            Style="{StaticResource PageTitleStyle}" />
+            Style="{StaticResource PageTitleStyle}"
+            Margin="{StaticResource LargeRightMargin}"/>
 
-        <Grid 
-            Grid.Row="1" 
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
-        </Grid>
+            <Button x:Name="btnCreateEvent" Content="Create Event"
+                     Margin="{StaticResource MediumLeftRightMargin}"/>
+            <Button x:Name="btnModifyEvent" Content="Modify Event"
+                     Margin="{StaticResource MediumLeftRightMargin}"/>
+            <Button x:Name="btnDeleteEvent" Content="Delete Event"
+                     Margin="{StaticResource MediumLeftRightMargin}"/>
+
+        </StackPanel>
+        <GridView ItemsSource = "{x:Bind ViewModel.TimetableEvents}">
+            <GridView.ItemTemplate>
+                <DataTemplate >
+                    <StackPanel Orientation="Vertical" Background="Gray"
+                                Margin="{StaticResource MediumLeftTopRightBottomMargin}">
+                        <TextBlock Foreground="Yellow" FontSize ="16" Text="{Binding EventName}" />
+                        <TextBlock Foreground="Yellow" FontSize ="12" Text="{Binding Location}" />
+                        <TextBlock Foreground="Yellow" FontSize ="12" Text="{Binding Description}" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        
+        
+
+        
         <!--  Adaptive triggers  -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="WindowStates">
@@ -43,5 +61,5 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-    </Grid>
+    </StackPanel>
 </Page>
