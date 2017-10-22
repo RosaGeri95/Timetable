@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableUWP", "TimetableUWP\TimetableUWP.csproj", "{5B97F457-665D-457C-9F73-7C6516060B2B}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableService", "TimetableService\TimetableService.csproj", "{BD411F8D-1408-4976-BD94-F82293AA89E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teszt", "Teszt\Teszt.csproj", "{A49F8355-DE58-4BC5-BACC-B3DD8548D856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTableASP", "TimeTableASP\TimeTableASP.csproj", "{CF28EDE7-861E-4EEF-8722-9434505E834B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,22 @@ Global
 		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|x64.Build.0 = Release|Any CPU
 		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|x86.ActiveCfg = Release|Any CPU
 		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|x86.Build.0 = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|x64.Build.0 = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Debug|x86.Build.0 = Debug|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|ARM.Build.0 = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|x64.Build.0 = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF28EDE7-861E-4EEF-8722-9434505E834B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
