@@ -20,6 +20,7 @@ namespace TimetableMockService.MockServices
             Users = new List<User>();
 
             FillCalendarWithDummyEvents();
+
         }
 
         private void FillCalendarWithDummyEvents()
