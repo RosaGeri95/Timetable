@@ -15,7 +15,7 @@ namespace TimetableInterfaces.Interfaces
 
         bool DeleteEvent(int event_id); // törli az adott eseményt
 
-        User UserLogin(string userName, string password);
+        bool UserLogin(string userName, string password);
 
         bool AddUser(User u);
 

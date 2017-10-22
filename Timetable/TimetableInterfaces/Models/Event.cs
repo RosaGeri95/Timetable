@@ -9,7 +9,24 @@ namespace TimetableInterfaces.Models
         private string eventName;
         private int priority;
 
+        public Event(int eventID, User owner, string eventName, string desc, string loc, int priority,
+            Category cat, List<EventDate> dates)
+        {
+            EventId = eventID;
+            EventOwner = owner;
+            EventName = eventName;
+            Description = desc;
+            Location = loc;
+            Priority = priority;
+            Category = cat;
+            EventDates = dates;
+        }
+
         public int EventId { get; set; }
+
+        //Ezt azért vettem fel, hogy tudjuk melyik felhasználóhoz tartozik az event
+        //A MockCalendarService listEvents függvényéhez kell
+        public User EventOwner { get; set; }
 
         public string EventName
         {
@@ -53,5 +70,41 @@ namespace TimetableInterfaces.Models
         }
         public Category Category { get; set; }
         public List<EventDate> EventDates { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Event other = (Event) obj;
+            return this.EventId == other.EventId;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder times = new StringBuilder();
+            foreach(EventDate ed in EventDates)
+            {
+                times.Append("Week parity: ");
+                times.Append(ed.Parity.ToString());
+                times.Append(", Day number: ");
+                times.Append(ed.Day.ToString());
+                times.Append(", Time: ");
+                times.Append(ed.StartDate.ToString());
+                times.Append(" - ");
+                times.Append(ed.EndDate.ToString());
+                times.Append("\t");
+            }
+
+            return "Name of Event: " + EventName + "\n"
+                + "Owner: " + EventOwner.Username + "\n"
+                + "Location: " + Location + "\n"
+                + "Description: " + Description + "\n"
+                + "Due Times: " + times.ToString() + "\n"
+                + "Category: " + Category.Name + "\n";
+        }
+
     }
 }
