@@ -20,7 +20,7 @@
             Margin="{StaticResource LargeRightMargin}"/>
 
             <Button x:Name="btnCreateEvent" Content="Create Event"
-                     Margin="{StaticResource MediumLeftRightMargin}"/>
+                     Margin="{StaticResource MediumLeftRightMargin}" Click="btnCreateEvent_Click"/>
             <Button x:Name="btnModifyEvent" Content="Modify Event"
                      Margin="{StaticResource MediumLeftRightMargin}"/>
             <Button x:Name="btnDeleteEvent" Content="Delete Event"
