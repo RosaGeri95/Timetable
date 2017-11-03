@@ -6,13 +6,20 @@ using TimetableMockService.Factory;
 using TimetableMockService.MockServices;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using TimetableUWP.Command;
 
 namespace TimetableUWP.ViewModels
 {
     public class TimetableViewModel : Observable
     {
-        public ObservableCollection<Event> TimetableEvents { get; set; }
         private MockCalendarService mcs;
+
+        public ObservableCollection<Event> TimetableEvents { get; set; }
+
+        public TimetableModelViewCommand AddCommand { get; }
+        public TimetableModelViewCommand DeleteCommand { get; }
+
+        private int temporaryIdCounter = 3;
 
         public TimetableViewModel()
         {
@@ -21,12 +28,30 @@ namespace TimetableUWP.ViewModels
 
             TimetableEvents = new ObservableCollection<Event>(mcs.ListEvents(mcs.CurrentUser.Username));
 
+            AddCommand = new TimetableModelViewCommand(this.AddEvent, this.IsNoMoreThanTwenty);
+            DeleteCommand = new TimetableModelViewCommand(this.DeleteEvent, this.IsTimetableEmpty);
+
+        }
+        private bool IsNoMoreThanTwenty()
+        {
+            if(TimetableEvents.Count >= 20)
+            {
+                return false;
+            }
+            return true;
         }
 
+        private bool IsTimetableEmpty()
+        {
+            if(TimetableEvents.Count == 0)
+            {
+                return false;
+            }
+            return true;
+        }
 
-        /* ---------------  KIZÁRÓLAG TESZT CÉLJÁBÓL -------------- */
-
-        public void Add()
+        
+        public void AddEvent()
         {
             Category category3 = new Category(2, "Exam", 2);
 
@@ -36,11 +61,24 @@ namespace TimetableUWP.ViewModels
             {
                 ed0
             };
-            TimetableEvents.Add(new Event(
-                 0, mcs.CurrentUser, "Temalabor", "AUT tanszék témalabora", "QB202",
+            Event e = new Event(
+                 temporaryIdCounter, mcs.CurrentUser, "Temalabor", "AUT tanszék témalabora", "QB202",
                  1, category3, dates0
-                 ));
+                 );
 
+            mcs.AddEvent(e);
+            TimetableEvents.Add(e);
+
+            temporaryIdCounter++;
         }
+
+        public void DeleteEvent()
+        {
+            mcs.DeleteEvent(temporaryIdCounter-1);
+            temporaryIdCounter--;
+
+            TimetableEvents.RemoveAt(TimetableEvents.Count - 1);
+        }
+
     }
 }

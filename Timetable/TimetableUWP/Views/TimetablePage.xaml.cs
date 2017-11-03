@@ -16,15 +16,7 @@ namespace TimetableUWP.Views
         public TimetablePage()
         {
             InitializeComponent();
-        }
-
-        private void btnCreateEvent_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            ViewModel.Add();
-
-
-
-
+            this.DataContext = ViewModel;
         }
     }
 }
