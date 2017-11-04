@@ -20,11 +20,13 @@
             Margin="{StaticResource LargeRightMargin}"/>
 
             <Button x:Name="btnCreateEvent" Content="Create Event"
-                     Margin="{StaticResource MediumLeftRightMargin}"/>
+                     Margin="{StaticResource MediumLeftRightMargin}"
+                     Command="{Binding AddCommand}"/>
             <Button x:Name="btnModifyEvent" Content="Modify Event"
                      Margin="{StaticResource MediumLeftRightMargin}"/>
             <Button x:Name="btnDeleteEvent" Content="Delete Event"
-                     Margin="{StaticResource MediumLeftRightMargin}"/>
+                     Margin="{StaticResource MediumLeftRightMargin}"
+                     Command="{Binding DeleteCommand}"/>
 
         </StackPanel>
         <GridView ItemsSource = "{x:Bind ViewModel.TimetableEvents}">
@@ -32,6 +34,7 @@
                 <DataTemplate >
                     <StackPanel Orientation="Vertical" Background="Gray"
                                 Margin="{StaticResource MediumLeftTopRightBottomMargin}">
+                        <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
                         <TextBlock Foreground="Yellow" FontSize ="16" Text="{Binding EventName}" />
                         <TextBlock Foreground="Yellow" FontSize ="12" Text="{Binding Location}" />
                         <TextBlock Foreground="Yellow" FontSize ="12" Text="{Binding Description}" />
