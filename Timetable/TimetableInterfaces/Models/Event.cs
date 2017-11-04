@@ -87,15 +87,18 @@ namespace TimetableInterfaces.Models
             StringBuilder times = new StringBuilder();
             foreach(EventDate ed in EventDates)
             {
-                times.Append("Week parity: ");
-                times.Append(ed.Parity.ToString());
-                times.Append(", Day number: ");
-                times.Append(ed.Day.ToString());
-                times.Append(", Time: ");
-                times.Append(ed.StartDate.ToString());
-                times.Append(" - ");
-                times.Append(ed.EndDate.ToString());
-                times.Append("\t");
+                if (ed.ChoosenEvent == true)
+                {
+                    times.Append("Week parity: ");
+                    times.Append(ed.Parity.ToString());
+                    times.Append(", Day number: ");
+                    times.Append(ed.Day.ToString());
+                    times.Append(", Time: ");
+                    times.Append(ed.StartDate.ToString());
+                    times.Append(" - ");
+                    times.Append(ed.EndDate.ToString());
+                    times.Append("\t");
+                }
             }
 
             return "Name of Event: " + EventName + "\n"
@@ -106,5 +109,15 @@ namespace TimetableInterfaces.Models
                 + "Category: " + Category.Name + "\n";
         }
 
+        public EventDate getValidEventDate() {
+
+            EventDate localed = null;
+
+            foreach (EventDate ed in EventDates)
+                if (ed.ChoosenEvent == true)
+                    localed = ed;
+
+            return localed;
+        }
     }
 }

@@ -1,10 +1,20 @@
 ﻿@page
-@model ContactModel
+@model EventsModel
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Events";
+    ViewData["Name"] = "Bella Adrián";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@Model.Message</h3>
+<p><strong>@Model.Mynumber</strong></p>
+<table>
+    <tr>
+        <th>
+            @ViewData["Name"]
+        </th>
+    </tr>
+
+</table>
 
 <address>
     One Microsoft Way<br />

@@ -9,18 +9,20 @@ namespace TimetableInterfaces.Models
         private int day;
         private int parity;
 
-        public EventDate(int eventID, TimeSpan start, TimeSpan end, int day, int parity)
+        public EventDate(int eventID, TimeSpan start, TimeSpan end, int day, int parity, bool choosenEvent)
         {
             EventId = eventID;
             StartDate = start;
             EndDate = end;
             Day = day;
             Parity = parity;
+            ChoosenEvent = choosenEvent;
         }
 
         public int EventId { get; set; }
         public TimeSpan StartDate { get; set; }
         public TimeSpan EndDate { get; set; }
+        public bool ChoosenEvent { get; set; }
 
         public int Day
         {

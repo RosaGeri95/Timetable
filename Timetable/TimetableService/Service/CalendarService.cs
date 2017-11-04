@@ -37,6 +37,16 @@ namespace TimetableService.Service
             throw new NotImplementedException();
         }
 
+        public Event GetEvent(int event_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetUser(string username)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Event> ListEvents(string userName)
         {
             throw new NotImplementedException();

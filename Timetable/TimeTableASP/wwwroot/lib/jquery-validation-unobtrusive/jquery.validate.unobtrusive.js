@@ -28,7 +28,9 @@
     }
 
     function getModelPrefix(fieldName) {
-        return fieldName.substr(0, fieldName.lastIndexOf(".") + 1);
+        return fieldName.substr(0, fieldName.last
+
+Of(".") + 1);
     }
 
     function appendModelPrefix(value, prefix) {

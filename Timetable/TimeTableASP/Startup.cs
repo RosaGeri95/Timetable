@@ -43,8 +43,10 @@ namespace TimeTableASP
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                 "Default",                                              // Route name
+                 "{controller}/{action}/{id}",                           // URL with parameters
+                 new { controller = "TimeTable", action = "TimeTable", id = "" }  // Parameter defaults
+             );
             });
         }
     }

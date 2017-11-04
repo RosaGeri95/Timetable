@@ -6,13 +6,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace TimeTableASP.Pages
 {
-    public class AboutModel : PageModel
+    public class EventsModel : PageModel
     {
         public string Message { get; set; }
+        public int Mynumber { get; set; }
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "Your contact page.";
+            Mynumber = 16;
         }
     }
 }
