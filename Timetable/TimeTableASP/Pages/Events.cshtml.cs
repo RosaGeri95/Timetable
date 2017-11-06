@@ -8,13 +8,10 @@ namespace TimeTableASP.Pages
 {
     public class EventsModel : PageModel
     {
-        public string Message { get; set; }
-        public int Mynumber { get; set; }
-
+        
         public void OnGet()
         {
-            Message = "Your contact page.";
-            Mynumber = 16;
+            
         }
     }
 }
