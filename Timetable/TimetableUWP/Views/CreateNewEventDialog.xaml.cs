@@ -72,6 +72,7 @@ namespace TimetableUWP.Views
 
                 tvm.Cs.AddEvent(e);
                 tvm.TimetableEvents.Add(e);
+                tvm.SortEventsIntoDays();
             }
             catch (Exception e)
             {

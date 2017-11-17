@@ -22,6 +22,15 @@ namespace TimetableUWP.ViewModels
 
         public ObservableCollection<Event> TimetableEvents { get; set; }
 
+        public ObservableCollection<Event> Monday { get; set; }
+        public ObservableCollection<Event> Tuesday { get; set; }
+        public ObservableCollection<Event> Wednesday { get; set; }
+        public ObservableCollection<Event> Thursday { get; set; }
+        public ObservableCollection<Event> Friday { get; set; }
+        public ObservableCollection<Event> Saturday { get; set; }
+        public ObservableCollection<Event> Sunday { get; set; }
+
+
         public TimetableModelViewCommand AddCommand { get; }
         public TimetableModelViewCommand DeleteCommand { get; }
         public TimetableModelViewCommand LoginCommand { get; }
@@ -34,6 +43,14 @@ namespace TimetableUWP.ViewModels
             Cs = mcsf.CreateCalendarService("MCS");
             
             TimetableEvents = new ObservableCollection<Event>();
+
+            Monday = new ObservableCollection<Event>();
+            Tuesday = new ObservableCollection<Event>();
+            Wednesday = new ObservableCollection<Event>();
+            Thursday = new ObservableCollection<Event>();
+            Friday = new ObservableCollection<Event>();
+            Saturday = new ObservableCollection<Event>();
+            Sunday = new ObservableCollection<Event>();
 
             AddCommand = new TimetableModelViewCommand(this.AddEvent, this.IsNoMoreThanTwenty);
             DeleteCommand = new TimetableModelViewCommand(this.DeleteEvent, this.IsTimetableEmpty);
@@ -59,10 +76,16 @@ namespace TimetableUWP.ViewModels
 
         public void Login()
         {
-            if (TimetableEvents.Count > 0)
-                TimetableEvents.Clear();
+            TimetableEvents.Clear();
 
-            
+            Monday.Clear();
+            Tuesday.Clear();
+            Wednesday.Clear();
+            Thursday.Clear();
+            Friday.Clear();
+            Saturday.Clear();
+            Sunday.Clear();
+
             if (Username == null)
             {
                 Alert("No username given");
@@ -77,6 +100,7 @@ namespace TimetableUWP.ViewModels
                 {
                     TimetableEvents.Add(e);
                 }
+                SortEventsIntoDays();
             }
             else if (Username == "Adrian")
             {
@@ -88,10 +112,42 @@ namespace TimetableUWP.ViewModels
                 {
                     TimetableEvents.Add(e);
                 }
+                SortEventsIntoDays();
             }
             else
             {
                 Alert("Wrong username!");
+            }
+        }
+
+        public void SortEventsIntoDays()
+        {
+            foreach(Event e in TimetableEvents)
+            {
+                switch(e.getValidEventDate().Day)
+                {
+                    case 1:
+                        Monday.Add(e);
+                        break;
+                    case 2:
+                        Tuesday.Add(e);
+                        break;
+                    case 3:
+                        Wednesday.Add(e);
+                        break;
+                    case 4:
+                        Thursday.Add(e);
+                        break;
+                    case 5:
+                        Friday.Add(e);
+                        break;
+                    case 6:
+                        Saturday.Add(e);
+                        break;
+                    case 7:
+                        Sunday.Add(e);
+                        break;
+                }
             }
         }
 
