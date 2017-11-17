@@ -7,30 +7,37 @@ using TimetableMockService.MockServices;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using TimetableUWP.Command;
+using TimetableInterfaces.Interfaces;
+using Windows.UI.Xaml.Controls;
+using TimetableUWP.Views;
+using Windows.UI.Popups;
 
 namespace TimetableUWP.ViewModels
 {
     public class TimetableViewModel : Observable
     {
-        private MockCalendarService mcs;
+        public ICalendarService Cs { get; }
+
+        public String Username { get; set; }
 
         public ObservableCollection<Event> TimetableEvents { get; set; }
 
         public TimetableModelViewCommand AddCommand { get; }
         public TimetableModelViewCommand DeleteCommand { get; }
+        public TimetableModelViewCommand LoginCommand { get; }
 
         private int temporaryIdCounter = 3;
 
         public TimetableViewModel()
         {
             MyCalendarServiceFactory mcsf = new MyCalendarServiceFactory();
-            mcs = (MockCalendarService)mcsf.CreateCalendarService("MCS");
-
-            TimetableEvents = new ObservableCollection<Event>(mcs.ListEvents(mcs.CurrentUser.Username));
+            Cs = mcsf.CreateCalendarService("MCS");
+            
+            TimetableEvents = new ObservableCollection<Event>();
 
             AddCommand = new TimetableModelViewCommand(this.AddEvent, this.IsNoMoreThanTwenty);
             DeleteCommand = new TimetableModelViewCommand(this.DeleteEvent, this.IsTimetableEmpty);
-
+            LoginCommand = new TimetableModelViewCommand(this.Login, () => true);
         }
         private bool IsNoMoreThanTwenty()
         {
@@ -50,35 +57,66 @@ namespace TimetableUWP.ViewModels
             return true;
         }
 
-        
+        public void Login()
+        {
+            if (TimetableEvents.Count > 0)
+                TimetableEvents.Clear();
+
+            
+            if (Username == null)
+            {
+                Alert("No username given");
+            }
+            else if (Username == "Gergely")
+            {
+                //login not properly implemented yet (logins automatically)
+                Cs.UserLogin(Username, "pw123");
+
+                ObservableCollection<Event> temp = new ObservableCollection<Event>(Cs.ListEvents(Username));
+                foreach(Event e in temp)
+                {
+                    TimetableEvents.Add(e);
+                }
+            }
+            else if (Username == "Adrian")
+            {
+                //logins automatically
+                Cs.UserLogin(Username, "pw789");
+
+                ObservableCollection<Event> temp = new ObservableCollection<Event>(Cs.ListEvents(Username));
+                foreach (Event e in temp)
+                {
+                    TimetableEvents.Add(e);
+                }
+            }
+            else
+            {
+                Alert("Wrong username!");
+            }
+        }
+
         public void AddEvent()
         {
-            Category category3 = new Category(2, "Exam", 2);
+            DisplayNewEventDialog();
+        }
 
-            EventDate ed0 = new EventDate(0,
-                new TimeSpan(14, 0, 0), new TimeSpan(14, 20, 0), 1, 2);
-            List<EventDate> dates0 = new List<EventDate>
-            {
-                ed0
-            };
-            Event e = new Event(
-                 temporaryIdCounter, mcs.CurrentUser, "Temalabor", "AUT tanszék témalabora", "QB202",
-                 1, category3, dates0
-                 );
-
-            mcs.AddEvent(e);
-            TimetableEvents.Add(e);
-
-            temporaryIdCounter++;
+        private async void DisplayNewEventDialog()
+        {
+            var dialog = new CreateNewEventDialog(this, Username, temporaryIdCounter++);
+            await dialog.ShowAsync();
         }
 
         public void DeleteEvent()
         {
-            mcs.DeleteEvent(temporaryIdCounter-1);
+            Cs.DeleteEvent(temporaryIdCounter-1);
             temporaryIdCounter--;
-
             TimetableEvents.RemoveAt(TimetableEvents.Count - 1);
         }
 
+        public async void Alert(String message)
+        {
+            MessageDialog md = new MessageDialog(message);
+            await md.ShowAsync();
+        }
     }
 }
