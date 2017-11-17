@@ -40,7 +40,7 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition />
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -48,19 +48,19 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical">
-                <TextBlock Text="Monday"/>
-                <ListView ItemsSource="{Binding Monday}">
+            <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center" Text="Monday"/>
+                <ListView ItemsSource="{Binding Monday}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Gray" Width="200"
-                            Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                                <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock FontSize ="16" HorizontalAlignment="Center" Text="{Binding EventName}" />
-                                <TextBlock FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock FontSize ="12" Text="{Binding EventDate}" />
+                            <StackPanel Orientation="Vertical" Background="LightCyan"
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Stretch">
+                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Description}" />
+                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Priority}" />
+                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Path=EventDates.StartDate}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

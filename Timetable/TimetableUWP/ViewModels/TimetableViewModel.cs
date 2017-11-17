@@ -77,14 +77,7 @@ namespace TimetableUWP.ViewModels
         public void Login()
         {
             TimetableEvents.Clear();
-
-            Monday.Clear();
-            Tuesday.Clear();
-            Wednesday.Clear();
-            Thursday.Clear();
-            Friday.Clear();
-            Saturday.Clear();
-            Sunday.Clear();
+            ClearEventArrays();
 
             if (Username == null)
             {
@@ -120,8 +113,21 @@ namespace TimetableUWP.ViewModels
             }
         }
 
+        private void ClearEventArrays()
+        {
+            Monday.Clear();
+            Tuesday.Clear();
+            Wednesday.Clear();
+            Thursday.Clear();
+            Friday.Clear();
+            Saturday.Clear();
+            Sunday.Clear();
+        }
+
         public void SortEventsIntoDays()
         {
+            ClearEventArrays();
+
             foreach(Event e in TimetableEvents)
             {
                 switch(e.getValidEventDate().Day)
