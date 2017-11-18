@@ -15,45 +15,31 @@ namespace TimeTableASP.Pages
 {
     public class TimeTableModel : PageModel
     {
-        private ACalendarServiceFactory acs;
-        private ICalendarService ics;
+        private readonly ICalendarService _icalendarService;
+
         public Dictionary<string,Event> events;
 
-        public TimeTableModel() {
-            acs = new MyCalendarServiceFactory();
-            ics = acs.CreateCalendarService("MCS");
-            events = new Dictionary<string, Event>();
+        public TimeTableModel(ICalendarService icalendarService) {
 
-            OrderDays();
+            _icalendarService = icalendarService;
+
+            events = new Dictionary<string, Event>();
+            
         }
 
         public void OnGet()
         {
-        }
+            List<Event> localevents = _icalendarService.ListEvents("Adrian");
 
-        public List<string> GetDailyEvents(string day) {
-
-            List<string> strlist = new List<string>();
-
-            foreach (KeyValuePair<string, Event> kv in events)
-                if (kv.Key.Equals(day))
-                    strlist.Add(kv.Value.ToString());
-
-            return strlist;
-        }
-
-        public void OrderDays() {
-
-            List<Event> localevents = ics.ListEvents("Adrian");
-
-
+            #region OrderDays    
             foreach (Event e in localevents)
             {
                 foreach (EventDate ed in e.EventDates)
                 {
                     if (ed.ChoosenEvent == true)
                     {
-                        switch (ed.Day) {
+                        switch (ed.Day)
+                        {
                             case 0:
                                 events.Add("Hetfo", e);
                                 break;
@@ -81,6 +67,18 @@ namespace TimeTableASP.Pages
                     }
                 }
             }
+            #endregion
+        }
+
+        public List<string> GetDailyEvents(string day) {
+
+            List<string> strlist = new List<string>();
+
+            foreach (KeyValuePair<string, Event> kv in events)
+                if (kv.Key.Equals(day))
+                    strlist.Add(kv.Value.ToString());
+
+            return strlist;
         }
     }
 }
