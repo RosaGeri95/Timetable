@@ -25,9 +25,6 @@ namespace TimetableInterfaces.Interfaces
 
         List<Event> GenerateNewScheduling(string userName); // újragenerálja az órarendet
 
-        //***********************************
-        //------ teszteléshez kellenek ------
-        //***********************************
         User GetUser(string username);
 
         Event GetEvent(int event_id);
