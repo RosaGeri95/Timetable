@@ -238,10 +238,7 @@ namespace TimetableMockService.MockServices
             }
             return false;
         }
-
-        //***********************************
-        //------ teszteléshez kellenek ------
-        //***********************************
+        
         public User GetUser(string username)
         {
             foreach(User user in Users)
