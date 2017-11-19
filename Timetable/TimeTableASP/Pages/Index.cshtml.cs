@@ -10,33 +10,45 @@ using TimetableInterfaces.Interfaces;
 using TimetableInterfaces.Models;
 using System.Text;
 using System.Collections;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace TimeTableASP.Pages
 {
     public class TimeTableModel : PageModel
     {
         private readonly ICalendarService _icalendarService;
+        private readonly ILogger _logger;
 
-        public Dictionary<string,Event> events;
+        public static int weekParity = 0;
 
-        public TimeTableModel(ICalendarService icalendarService) {
+        public Dictionary<string,Event> events = new Dictionary<string, Event>();
+
+        public TimeTableModel(ICalendarService icalendarService, ILogger<TimeTableModel> logger) {
 
             _icalendarService = icalendarService;
-
-            events = new Dictionary<string, Event>();
+            _logger = logger;
             
         }
 
-        public void OnGet()
+        public void OnGet()//az oldal szükséges állapotának inícializálása
         {
             List<Event> localevents = _icalendarService.ListEvents("Adrian");
+            _logger.LogDebug(50000, new Exception(), "\n--------------OnGet()-----------\n");
+            
+            if (weekParity == 0)
+                weekParity = 1;
+            else if (weekParity == 1)
+                weekParity = 2;
+            else if (weekParity == 2)
+                weekParity = 1;
 
             #region OrderDays    
             foreach (Event e in localevents)
             {
                 foreach (EventDate ed in e.EventDates)
                 {
-                    if (ed.ChoosenEvent == true)
+                    if (ed.ChoosenEvent == true && (ed.Parity == weekParity || ed.Parity == 0))
                     {
                         switch (ed.Day)
                         {
@@ -79,6 +91,14 @@ namespace TimeTableASP.Pages
                     strlist.Add(kv.Value.ToString());
 
             return strlist;
+        }
+
+        public string RenderTableElement(int day, TimeSpan time) {            
+            return "*";
+        }
+
+        public string getElementRowSize(int day, TimeSpan time) {
+            return "1";
         }
     }
 }

@@ -25,7 +25,7 @@ namespace TimeTableASP
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            services.AddLogging();
             services.AddTransient<ICalendarService, MockCalendarService>();//DI-hez kell, ezt kell majd átírni CalendarService-re ha az kész
         }
 
@@ -36,6 +36,7 @@ namespace TimeTableASP
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
+                
             }
             else
             {

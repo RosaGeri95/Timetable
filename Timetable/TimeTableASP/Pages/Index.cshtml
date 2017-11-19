@@ -3,13 +3,93 @@
 @{
     ViewData["Title"] = "TimeTable";
     List<string> strl = new List<string>();
+
+    var hour = 8;
+    var min = 0;
+
+    TimeSpan time;
+    var weekParityStr = "A";
+
+    if (TimeTableModel.weekParity == 2)
+    {
+        weekParityStr = "B";
+    }
 }
     <div class="timetable-title-table" >
-        <div class="timetable-title">
-                <h1>Órarend: A hét</h1>
-                <hr>
-        </div>
-        <div class="timetable-table">
-        
-        </div>
-    </div>
+            <style type="text/css">
+                body {
+                    font-family: arial;
+                    font-size: small;
+                }
+
+                th, td {
+                    margin: 0;
+                    text-align: center;
+                    border-collapse: collapse;
+                    outline: 1px solid #e3e3e3;
+                }
+
+                td {
+                    padding: 5px 10px;
+                }
+
+                th {
+                    background: #666;
+                    color: white;
+                    padding: 5px 10px;
+                }
+
+                td:hover {
+                    cursor: pointer;
+                    background: #666;
+                    color: white;
+                }
+            </style>
+
+            <table width="900" align="center">
+                <caption><h1>Timetable @weekParityStr week</h1></caption>                
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thrusday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+
+                @for (var i = 0; i < 25; i++)
+                {
+
+                    @if (i % 2 == 1) {
+                        min = 30;
+                    }
+                      else {
+                        min = 0;
+                        hour = 8+i/2;
+                    }
+
+                    time = new TimeSpan(hour,min,0);
+
+                    <tr>
+                        <td rowspan="1">@time.ToString()</td><!-- Fél órás idősávok -->
+                        <td rowspan=@Model.getElementRowSize(1, time)>@Model.RenderTableElement(1,time)</td><!-- Hétfő -->
+                        <td rowspan=@Model.getElementRowSize(2, time)>@Model.RenderTableElement(1, time)</td><!-- Kedd -->
+                        <td rowspan=@Model.getElementRowSize(3, time)>@Model.RenderTableElement(1, time)</td><!-- Szerda -->
+                        <td rowspan=@Model.getElementRowSize(4, time)>@Model.RenderTableElement(1, time)</td><!-- Csütörtök -->
+                        <td rowspan=@Model.getElementRowSize(5, time)>@Model.RenderTableElement(1, time)</td><!-- Péntek -->
+                        <td rowspan=@Model.getElementRowSize(6, time)>@Model.RenderTableElement(1, time)</td><!-- Szombat -->
+                        <td rowspan=@Model.getElementRowSize(7, time)>@Model.RenderTableElement(1, time)</td><!-- Vasárnap -->
+                    </tr>
+                }
+                
+
+            </table>
+        <form method="get">
+            <div>
+                <br /> 
+                <p><button type="submit">Change week</button></p>                
+            </div>
+        </form>
+</div>
