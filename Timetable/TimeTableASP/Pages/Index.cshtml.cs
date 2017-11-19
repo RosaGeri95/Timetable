@@ -22,7 +22,7 @@ namespace TimeTableASP.Pages
 
         public static int weekParity = 0;
 
-        public Dictionary<string,Event> events = new Dictionary<string, Event>();
+        public Dictionary<int,Event> events = new Dictionary<int, Event>();
 
         public TimeTableModel(ICalendarService icalendarService, ILogger<TimeTableModel> logger) {
 
@@ -34,7 +34,6 @@ namespace TimeTableASP.Pages
         public void OnGet()//az oldal szükséges állapotának inícializálása
         {
             List<Event> localevents = _icalendarService.ListEvents("Adrian");
-            _logger.LogDebug(50000, new Exception(), "\n--------------OnGet()-----------\n");
             
             if (weekParity == 0)
                 weekParity = 1;
@@ -52,29 +51,29 @@ namespace TimeTableASP.Pages
                     {
                         switch (ed.Day)
                         {
-                            case 0:
-                                events.Add("Hetfo", e);
-                                break;
                             case 1:
-                                events.Add("Kedd", e);
+                                events.Add(1, e);
                                 break;
                             case 2:
-                                events.Add("Szerda", e);
+                                events.Add(2, e);
                                 break;
                             case 3:
-                                events.Add("Csutortok", e);
+                                events.Add(3, e);
                                 break;
                             case 4:
-                                events.Add("Pentek", e);
+                                events.Add(4, e);
                                 break;
                             case 5:
-                                events.Add("Szombat", e);
+                                events.Add(5, e);
                                 break;
                             case 6:
-                                events.Add("Vasarnap", e);
+                                events.Add(6, e);
+                                break;
+                            case 7:
+                                events.Add(7, e);
                                 break;
                             default:
-                                throw new Exception("Nem megfelelő a Nap értéke!");
+                                throw new Exception("Nem megfelelő a Nap értéke, csak 1 és 7 közötti érték értelmezhető!");
                         }
                     }
                 }
@@ -86,19 +85,32 @@ namespace TimeTableASP.Pages
 
             List<string> strlist = new List<string>();
 
-            foreach (KeyValuePair<string, Event> kv in events)
+            foreach (KeyValuePair<int, Event> kv in events)
                 if (kv.Key.Equals(day))
                     strlist.Add(kv.Value.ToString());
 
             return strlist;
         }
 
-        public string RenderTableElement(int day, TimeSpan time) {            
-            return "*";
+        public string RenderTableElement(int day, TimeSpan time) {
+
+            string tableElementString = "";
+
+            foreach (KeyValuePair<int, Event> kv in events) {
+
+                TimeSpan CurrentEventStartDate = kv.Value.GetValidEventDate().StartDate;
+
+                if (kv.Key.Equals(day) && CurrentEventStartDate.Equals(time))
+                    tableElementString = kv.Value.ToString();
+            }
+
+            return tableElementString;
         }
 
         public string getElementRowSize(int day, TimeSpan time) {
-            return "1";
+            int rowSize = 1;
+
+            return rowSize.ToString();
         }
     }
 }
