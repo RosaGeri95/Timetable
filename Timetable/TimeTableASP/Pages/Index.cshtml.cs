@@ -110,6 +110,24 @@ namespace TimeTableASP.Pages
         public string getElementRowSize(int day, TimeSpan time) {
             int rowSize = 1;
 
+            foreach (KeyValuePair<int, Event> kv in events)
+            {
+
+                TimeSpan CurrentEventStartDate = kv.Value.GetValidEventDate().StartDate;
+                TimeSpan CurrentEventEndDate = kv.Value.GetValidEventDate().EndDate;
+                TimeSpan Diff = new TimeSpan(CurrentEventEndDate.Hours - CurrentEventStartDate.Hours
+                                            ,CurrentEventEndDate.Minutes - CurrentEventStartDate.Minutes
+                                            , 0);
+
+                if (kv.Key.Equals(day) && CurrentEventStartDate.Equals(time))
+                {
+                   
+                        rowSize = Diff.Hours * 2 + Diff.Minutes / 30;
+
+                }
+                    
+            }
+
             return rowSize.ToString();
         }
     }
