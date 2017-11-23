@@ -30,7 +30,6 @@ namespace TimetableUWP.ViewModels
         public ObservableCollection<Event> Saturday { get; set; }
         public ObservableCollection<Event> Sunday { get; set; }
 
-
         public TimetableModelViewCommand AddCommand { get; }
         public TimetableModelViewCommand DeleteCommand { get; }
         public TimetableModelViewCommand LoginCommand { get; }
