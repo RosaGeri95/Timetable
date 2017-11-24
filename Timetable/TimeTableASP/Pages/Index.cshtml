@@ -3,95 +3,93 @@
 @{
     ViewData["Title"] = "TimeTable";
     List<string> strl = new List<string>();
+
+    var hour = 8;
+    var min = 0;
+
+    TimeSpan time;
+    var weekParityStr = "A";
+
+    if (TimeTableModel.weekParity == 2)
+    {
+        weekParityStr = "B";
+    }
 }
     <div class="timetable-title-table" >
-        <div class="timetable-title">
-                <h1>Órarend: A hét</h1>
-                <hr>
-        </div>
-        <div class="timetable-table">
-            <h2>Hétfő</h2>
-            <ol>
-                @{
-                    strl = Model.GetDailyEvents("Hetfo");
-
-                    foreach (string str in strl)
-                    {
-                        <li>@str</li>
-                    }
+            <style type="text/css">
+                body {
+                    font-family: arial;
+                    font-size: small;
                 }
-            </ol>
-            <hr>
-            <h2>Kedd</h2>
-            <ol>
-                @{
-                    strl = Model.GetDailyEvents("Kedd");
 
-                    foreach (string str in strl)
-                    {
-                        <li>@str</li>
-                    }
+                th, td {
+                    margin: 0;
+                    text-align: center;
+                    border-collapse: collapse;
+                    outline: 1px solid #e3e3e3;
                 }
-            </ol>
-            <hr>
-            <h2>Szerda</h2>
-            <ol>
-                @{
-                    strl = Model.GetDailyEvents("Szerda");
 
-                    foreach (string str in strl)
-                    {
-                        <li>@str</li>
-                    }
+                td {
+                    padding: 5px 10px;
                 }
-            </ol>
-            <hr>
-            <h2>Csütörtök</h2>
-            <ol>
-                @{
-                    strl = Model.GetDailyEvents("Csutortok");
 
-                    foreach (string str in strl)
-                    {
-                        <li>@str</li>
-                    }
+                th {
+                    background: #666;
+                    color: white;
+                    padding: 5px 10px;
                 }
-            </ol>
-            <hr>
-            <h2>Péntek</h2>
-            <ol>
-                @{
-                    strl = Model.GetDailyEvents("Pentek");
 
-                    foreach (string str in strl)
-                    {
-                        <li>@str</li>
-                    }
+                td:hover {
+                    cursor: pointer;
+                    background: #666;
+                    color: white;
                 }
-            </ol>
-            <hr>
-            <h2>Szombat</h2>
-            <ol>
-                @{
-                    strl = Model.GetDailyEvents("Szombat");
+            </style>
 
-                    foreach (string str in strl)
-                    {
-                        <li>@str</li>
-                    }
-                }
-            </ol>
-            <hr>
-            <h2>Vasárnap</h2>
-            <ol>
-                @{
-                    strl = Model.GetDailyEvents("Vasarnap");
+            <table width="900" align="center">
+                <caption><h1>Timetable @weekParityStr week</h1></caption>                
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thrusday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
 
-                    foreach (string str in strl)
-                    {
-                        <li>@str</li>
+                @for (var i = 0; i < 25; i++)
+                {
+
+                    @if (i % 2 == 1) {
+                        min = 30;
                     }
+                      else {
+                        min = 0;
+                        hour = 8+i/2;
+                    }
+
+                    time = new TimeSpan(hour,min,0);
+
+                    <tr>
+                        <td rowspan="1">@time.ToString()</td><!-- Fél órás idősávok -->
+                        <td rowspan=@Model.getElementRowSize(1, time)>@Model.RenderTableElement(1,time)</td><!-- Hétfő -->
+                        <td rowspan=@Model.getElementRowSize(2, time)>@Model.RenderTableElement(2, time)</td><!-- Kedd -->
+                        <td rowspan=@Model.getElementRowSize(3, time)>@Model.RenderTableElement(3, time)</td><!-- Szerda -->
+                        <td rowspan=@Model.getElementRowSize(4, time)>@Model.RenderTableElement(4, time)</td><!-- Csütörtök -->
+                        <td rowspan=@Model.getElementRowSize(5, time)>@Model.RenderTableElement(5, time)</td><!-- Péntek -->
+                        <td rowspan=@Model.getElementRowSize(6, time)>@Model.RenderTableElement(6, time)</td><!-- Szombat -->
+                        <td rowspan=@Model.getElementRowSize(7, time)>@Model.RenderTableElement(7, time)</td><!-- Vasárnap -->
+                    </tr>
                 }
-            </ol>
-        </div>
-    </div>
+                
+
+            </table>
+        <form method="get">
+            <div>
+                <br /> 
+                <p><button type="submit">Change week</button></p>                
+            </div>
+        </form>
+</div>

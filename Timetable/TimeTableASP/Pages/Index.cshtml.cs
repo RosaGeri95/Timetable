@@ -10,77 +10,107 @@ using TimetableInterfaces.Interfaces;
 using TimetableInterfaces.Models;
 using System.Text;
 using System.Collections;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace TimeTableASP.Pages
 {
     public class TimeTableModel : PageModel
     {
-        private ACalendarServiceFactory acs;
-        private ICalendarService ics;
-        public Dictionary<string,Event> events;
+        private readonly ICalendarService _icalendarService;
+        private readonly ILogger _logger;
 
-        public TimeTableModel() {
-            acs = new MyCalendarServiceFactory();
-            ics = acs.CreateCalendarService("MCS");
-            events = new Dictionary<string, Event>();
+        public static int weekParity = 0;
 
-            OrderDays();
+        public Dictionary<int,Event> events = new Dictionary<int, Event>();
+
+        public TimeTableModel(ICalendarService icalendarService, ILogger<TimeTableModel> logger) {
+
+            _icalendarService = icalendarService;
+            _logger = logger;
+            
         }
 
-        public void OnGet()
+        public void OnGet()//az oldal szükséges állapotának inícializálása
         {
+            List<Event> localevents = _icalendarService.ListEvents("Adrian");
+            
+            if (weekParity == 0)
+                weekParity = 1;
+            else if (weekParity == 1)
+                weekParity = 2;
+            else if (weekParity == 2)
+                weekParity = 1;
+
+            #region OrderDays    
+            foreach (Event e in localevents)
+            {
+                foreach (EventDate ed in e.EventDates)
+                {
+                    if (ed.ChoosenEvent == true && (ed.Parity == weekParity || ed.Parity == 0))
+                    {
+                        switch (ed.Day)
+                        {
+                            case 1:
+                                events.Add(1, e);
+                                break;
+                            case 2:
+                                events.Add(2, e);
+                                break;
+                            case 3:
+                                events.Add(3, e);
+                                break;
+                            case 4:
+                                events.Add(4, e);
+                                break;
+                            case 5:
+                                events.Add(5, e);
+                                break;
+                            case 6:
+                                events.Add(6, e);
+                                break;
+                            case 7:
+                                events.Add(7, e);
+                                break;
+                            default:
+                                throw new Exception("Nem megfelelő a Nap értéke, csak 1 és 7 közötti érték értelmezhető!");
+                        }
+                    }
+                }
+            }
+            #endregion
         }
 
         public List<string> GetDailyEvents(string day) {
 
             List<string> strlist = new List<string>();
 
-            foreach (KeyValuePair<string, Event> kv in events)
+            foreach (KeyValuePair<int, Event> kv in events)
                 if (kv.Key.Equals(day))
                     strlist.Add(kv.Value.ToString());
 
             return strlist;
         }
 
-        public void OrderDays() {
+        public string RenderTableElement(int day, TimeSpan time) {
 
-            List<Event> localevents = ics.ListEvents("Adrian");
+            string tableElementString = "";
 
+            foreach (KeyValuePair<int, Event> kv in events) {
 
-            foreach (Event e in localevents)
-            {
-                foreach (EventDate ed in e.EventDates)
-                {
-                    if (ed.ChoosenEvent == true)
-                    {
-                        switch (ed.Day) {
-                            case 0:
-                                events.Add("Hetfo", e);
-                                break;
-                            case 1:
-                                events.Add("Kedd", e);
-                                break;
-                            case 2:
-                                events.Add("Szerda", e);
-                                break;
-                            case 3:
-                                events.Add("Csutortok", e);
-                                break;
-                            case 4:
-                                events.Add("Pentek", e);
-                                break;
-                            case 5:
-                                events.Add("Szombat", e);
-                                break;
-                            case 6:
-                                events.Add("Vasarnap", e);
-                                break;
-                            default:
-                                throw new Exception("Nem megfelelő a Nap értéke!");
-                        }
-                    }
-                }
+                TimeSpan CurrentEventStartDate = kv.Value.GetValidEventDate().StartDate;
+
+                if (kv.Key.Equals(day) && CurrentEventStartDate.Equals(time))
+                    tableElementString = kv.Value.ToString();
             }
+
+            return tableElementString;
+        }
+
+        public string getElementRowSize(int day, TimeSpan time) {
+            int rowSize = 1;
+
+            return rowSize.ToString();
         }
     }
 }
