@@ -49,13 +49,13 @@ namespace TimetableMockService.MockServices
 
             //EventDates for "Adrian"
             EventDate ed3 = new EventDate(3,
-                new TimeSpan(14, 0, 0), new TimeSpan(14, 20, 0), 1, 2, true);
+                new TimeSpan(14, 0, 0), new TimeSpan(14, 30, 0), 1, 2, true);
             EventDate ed4 = new EventDate(4,
                 new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0), 2, 1, true);
             EventDate ed42 = new EventDate(4,
                 new TimeSpan(15, 0, 0), new TimeSpan(17, 0, 0), 4, 2, false);
             EventDate ed5 = new EventDate(5,
-                new TimeSpan(9, 0, 0), new TimeSpan(11, 20, 0), 5, 0, true);
+                new TimeSpan(9, 0, 0), new TimeSpan(11, 30, 0), 5, 0, true);
 
             //add dates to list
             List<EventDate> dates0 = new List<EventDate>

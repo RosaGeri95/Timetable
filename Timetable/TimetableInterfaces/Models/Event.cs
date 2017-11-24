@@ -109,7 +109,7 @@ namespace TimetableInterfaces.Models
                 + "Category: " + Category.Name + "\n";
         }
 
-        public EventDate getValidEventDate() {
+        public EventDate GetValidEventDate() {
 
             EventDate localed = null;
 
