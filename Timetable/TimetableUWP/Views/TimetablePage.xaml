@@ -31,8 +31,6 @@
             <Button Content="Create Event"
                      Margin="{StaticResource MediumLeftRightMargin}"
                      Command="{Binding AddCommand}"/>
-            <Button Content="Modify Event"
-                     Margin="{StaticResource MediumLeftRightMargin}"/>
             <Button Content="Delete Event"
                      Margin="{StaticResource MediumLeftRightMargin}"
                      Command="{Binding DeleteCommand}"/>
@@ -40,7 +38,7 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -48,127 +46,113 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" Orientation="Vertical">
+            <StackPanel Grid.Column="0" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Monday"/>
-                <ListView ItemsSource="{Binding Monday}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                <ListView ItemsSource="{Binding Monday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Stretch">
-                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock  HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize ="12" Text="{Binding Path=EventDates.StartDate}" />
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Vertical">
-                <TextBlock Text="Tuesday"/>
+                <TextBlock HorizontalAlignment="Center" Text="Tuesday"/>
                 <ListView ItemsSource="{Binding Tuesday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Gray" Width="200"
-                            Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                                <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock FontSize ="16" HorizontalAlignment="Center" Text="{Binding EventName}" />
-                                <TextBlock FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock FontSize ="12" Text="{Binding EventDate}" />
+                            <StackPanel Orientation="Vertical" Background="LightCyan"
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Vertical">
-                <TextBlock Text="Wednesday"/>
+                <TextBlock HorizontalAlignment="Center" Text="Wednesday"/>
                 <ListView ItemsSource="{Binding Wednesday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Gray" Width="200"
-                            Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                                <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock FontSize ="16" HorizontalAlignment="Center" Text="{Binding EventName}" />
-                                <TextBlock FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock FontSize ="12" Text="{Binding EventDate}" />
+                            <StackPanel Orientation="Vertical" Background="LightCyan"
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
             <StackPanel Grid.Column="3" Orientation="Vertical">
-                <TextBlock Text="Thursday"/>
+                <TextBlock HorizontalAlignment="Center" Text="Thursday"/>
                 <ListView ItemsSource="{Binding Thursday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Gray" Width="200"
-                            Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                                <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock FontSize ="16" HorizontalAlignment="Center" Text="{Binding EventName}" />
-                                <TextBlock FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock FontSize ="12" Text="{Binding EventDate}" />
+                            <StackPanel Orientation="Vertical" Background="LightCyan"
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
             <StackPanel Grid.Column="4" Orientation="Vertical">
-                <TextBlock Text="Friday"/>
+                <TextBlock HorizontalAlignment="Center" Text="Friday"/>
                 <ListView ItemsSource="{Binding Friday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Gray" Width="200"
-                            Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                                <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock FontSize ="16" HorizontalAlignment="Center" Text="{Binding EventName}" />
-                                <TextBlock FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock FontSize ="12" Text="{Binding EventDate}" />
+                            <StackPanel Orientation="Vertical" Background="LightCyan"
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
             <StackPanel Grid.Column="5" Orientation="Vertical">
-                <TextBlock Text="Saturday"/>
+                <TextBlock HorizontalAlignment="Center" Text="Saturday"/>
                 <ListView ItemsSource="{Binding Saturday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Gray" Width="200"
-                            Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                                <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock FontSize ="16" HorizontalAlignment="Center" Text="{Binding EventName}" />
-                                <TextBlock FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock FontSize ="12" Text="{Binding EventDate}" />
+                            <StackPanel Orientation="Vertical" Background="LightCyan"
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
             <StackPanel Grid.Column="6" Orientation="Vertical">
-                <TextBlock Text="Sunday"/>
+                <TextBlock HorizontalAlignment="Center" Text="Sunday"/>
                 <ListView ItemsSource="{Binding Sunday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Gray" Width="200"
-                            Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                                <TextBlock Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock FontSize ="16" HorizontalAlignment="Center" Text="{Binding EventName}" />
-                                <TextBlock FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock FontSize ="12" Text="{Binding Priority}" />
-                                <TextBlock FontSize ="12" Text="{Binding EventDate}" />
+                            <StackPanel Orientation="Vertical" Background="LightCyan"
+                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -30,7 +30,6 @@ namespace TimetableUWP.ViewModels
         public ObservableCollection<Event> Saturday { get; set; }
         public ObservableCollection<Event> Sunday { get; set; }
 
-
         public TimetableModelViewCommand AddCommand { get; }
         public TimetableModelViewCommand DeleteCommand { get; }
         public TimetableModelViewCommand LoginCommand { get; }
@@ -130,7 +129,7 @@ namespace TimetableUWP.ViewModels
 
             foreach(Event e in TimetableEvents)
             {
-                switch(e.getValidEventDate().Day)
+                switch(e.GetValidEventDate().Day)
                 {
                     case 1:
                         Monday.Add(e);

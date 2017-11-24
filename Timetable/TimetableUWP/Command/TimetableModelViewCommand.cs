@@ -14,7 +14,6 @@ namespace TimetableUWP.Command
         private Action ExecuteFunction;
         private Func<bool> CanFunctionExecute;
 
-
         public TimetableModelViewCommand(Action action, Func<bool> predicate)
         {
             ExecuteFunction = action;
