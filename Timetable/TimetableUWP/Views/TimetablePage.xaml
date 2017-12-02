@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local = "using:TimetableUWP.Views"
-    xmlns:data ="using:TimetableInterfaces.Models;assembly=TimetableInterfaces"
     mc:Ignorable="d">
 
     <StackPanel
@@ -46,149 +45,79 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+
             <StackPanel Grid.Column="0" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Monday"/>
                 <ListView ItemsSource="{Binding Monday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
-                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            <local:EventUserControl/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
+            
             <StackPanel Grid.Column="1" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Tuesday"/>
                 <ListView ItemsSource="{Binding Tuesday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
-                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            <local:EventUserControl/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
+            
             <StackPanel Grid.Column="2" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Wednesday"/>
                 <ListView ItemsSource="{Binding Wednesday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
-                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            <local:EventUserControl/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
+            
             <StackPanel Grid.Column="3" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Thursday"/>
                 <ListView ItemsSource="{Binding Thursday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
-                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            <local:EventUserControl/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
+
             <StackPanel Grid.Column="4" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Friday"/>
                 <ListView ItemsSource="{Binding Friday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
-                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            <local:EventUserControl/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
+            
             <StackPanel Grid.Column="5" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Saturday"/>
                 <ListView ItemsSource="{Binding Saturday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
-                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            <local:EventUserControl/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
+            
             <StackPanel Grid.Column="6" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Sunday"/>
                 <ListView ItemsSource="{Binding Sunday}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="LightCyan"
-                            BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
-                                <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            <local:EventUserControl/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

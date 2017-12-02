@@ -135,6 +135,9 @@
     <Compile Include="Views\DeleteEventDialog.xaml.cs">
       <DependentUpon>DeleteEventDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EventUserControl.xaml.cs">
+      <DependentUpon>EventUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DeleteEventDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EventUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
