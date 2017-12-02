@@ -66,7 +66,7 @@ namespace TimetableUWP
 
         private ActivationService CreateActivationService()
         {
-            return new ActivationService(this, typeof(Views.LoginPage), new Views.ShellPage());
+            return new ActivationService(this, typeof(Views.TimetablePage), new Views.ShellPage());
         }
     }
 }

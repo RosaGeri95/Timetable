@@ -9,16 +9,16 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <StackPanel Orientation="Vertical" Background="LightCyan"
+    <StackPanel Orientation="Vertical" Background="LightGreen"
                             BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
         <TextBlock  Foreground="Red" FontSize ="12" Text="{Binding EventId}" />
         <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="16" Text="{Binding EventName}" />
         <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Location}" />
         <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12" Text="{Binding Description}" />
         <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize ="12">
-                                    <Run Text="{Binding StartDate}"/>
-                                    <Run Text="-"/>
-                                    <Run Text="{Binding EndDate}"/>
+            <Run Text="{Binding StartDate}"/>
+            <Run Text="-"/>
+            <Run Text="{Binding EndDate}"/>
         </TextBlock>
     </StackPanel>
 </UserControl>

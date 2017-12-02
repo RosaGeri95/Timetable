@@ -154,7 +154,6 @@ namespace TimetableUWP.ViewModels
             // More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
             // Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
             // Edit String/en-US/Resources.resw: Add a menu item title for each page
-            _primaryItems.Add(ShellNavigationItem.FromType<LoginPage>("Shell_Login".GetLocalized(), Symbol.Document));
             _primaryItems.Add(ShellNavigationItem.FromType<TimetablePage>("Shell_Timetable".GetLocalized(), Symbol.Document));
             _secondaryItems.Add(ShellNavigationItem.FromType<SettingsPage>("Shell_Settings".GetLocalized(), Symbol.Setting));
         }
