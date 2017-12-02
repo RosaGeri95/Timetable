@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace TimetableInterfaces.Models
 {
+    [Table("Termek")]
     public class Event
     {
-        private string eventName;
-        private int priority;
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int EventId { get; set; }
+        public User EventOwner { get; set; }
+        public string EventName { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+        public int Priority { get; set; }
+        public Category Category { get; set; }
+        public int Parity { get; set; }
+        public int Day { get; set; }
+        public TimeSpan StartDate { get; set; }
+        public TimeSpan EndDate { get; set; }
 
         public Event(int eventID, User owner, string eventName, string desc, string loc, int priority,
-            Category cat, List<EventDate> dates)
+            Category cat, TimeSpan startDate, TimeSpan endDate, int day, int parity)
         {
             EventId = eventID;
             EventOwner = owner;
@@ -19,57 +32,14 @@ namespace TimetableInterfaces.Models
             Location = loc;
             Priority = priority;
             Category = cat;
-            EventDates = dates;
+            StartDate = startDate;
+            EndDate = endDate;
+            Day = day;
+            Parity = parity;
         }
 
-        public int EventId { get; set; }
+     
 
-        //Ezt azért vettem fel, hogy tudjuk melyik felhasználóhoz tartozik az event
-        //A MockCalendarService listEvents függvényéhez kell
-        public User EventOwner { get; set; }
-
-        public string EventName
-        {
-            get
-            {
-                return eventName;
-            }
-            set
-            {
-                if (value.Length > 20)
-                {
-                    throw new Exception("Name of event is too long!");
-                }
-                else if (string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("Name of event cannot be empty!");
-                }
-                else
-                {
-                    eventName = value;
-                }
-            }
-        }
-        public string Description { get; set; }
-        public string Location { get; set; }
-        public int Priority
-        {
-            get { return priority; }
-            set
-            {
-                //prioritás 1, 2, 3 lehessen?
-                if (value >= 1 && value <= 3)
-                {
-                    priority = value;
-                }
-                else
-                {
-                    throw new Exception("Priority can be only between 1 and 3!");
-                }
-            }
-        }
-        public Category Category { get; set; }
-        public List<EventDate> EventDates { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -82,24 +52,24 @@ namespace TimetableInterfaces.Models
             return base.GetHashCode();
         }
 
+
+
         public override string ToString()
         {
             StringBuilder times = new StringBuilder();
-            foreach(EventDate ed in EventDates)
-            {
-                if (ed.ChoosenEvent == true)
-                {
+            
+                
                     times.Append("Week parity: ");
-                    times.Append(ed.Parity.ToString());
+                    times.Append(Parity.ToString());
                     times.Append(", Day number: ");
-                    times.Append(ed.Day.ToString());
+                    times.Append(Day.ToString());
                     times.Append(", Time: ");
-                    times.Append(ed.StartDate.ToString());
+                    times.Append(StartDate.ToString());
                     times.Append(" - ");
-                    times.Append(ed.EndDate.ToString());
+                    times.Append(EndDate.ToString());
                     times.Append("\t");
-                }
-            }
+                
+            
 
             return "Name of Event: " + EventName + "\n"
                 + "Owner: " + EventOwner.Username + "\n"
@@ -107,17 +77,6 @@ namespace TimetableInterfaces.Models
                 + "Description: " + Description + "\n"
                 + "Due Times: " + times.ToString() + "\n"
                 + "Category: " + Category.Name + "\n";
-        }
-
-        public EventDate GetValidEventDate() {
-
-            EventDate localed = null;
-
-            foreach (EventDate ed in EventDates)
-                if (ed.ChoosenEvent == true)
-                    localed = ed;
-
-            return localed;
         }
     }
 }

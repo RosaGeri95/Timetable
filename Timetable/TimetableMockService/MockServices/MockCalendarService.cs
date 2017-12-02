@@ -14,7 +14,7 @@ namespace TimetableMockService.MockServices
 
         public User CurrentUser { get; set; }
 
-        public MockCalendarService()
+        public MockCalendarService()//TODO:Ezt vissza kell írni public-ra éles verziónál
         {
             Events = new List<Event>();
             Users = new List<User>();
@@ -38,81 +38,42 @@ namespace TimetableMockService.MockServices
             Category category3 = new Category(2, "Exam", 2);
 
             //EventDates for "Gergely"
-            EventDate ed0 = new EventDate(0,
-                new TimeSpan(14, 0, 0), new TimeSpan(14, 20, 0), 1, 2, true);
-            EventDate ed1 = new EventDate(1,
-                new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0), 2, 1, false);
-            EventDate ed12 = new EventDate(1,
-                new TimeSpan(15, 0, 0), new TimeSpan(17, 0, 0), 4, 2, true);
-            EventDate ed2 = new EventDate(2,
-                new TimeSpan(9, 0, 0), new TimeSpan(11, 20, 0), 3, 0, true);
+            TimeSpan ed0_S = new TimeSpan(14, 0, 0);
+            TimeSpan ed0_E = new TimeSpan(14, 30, 0);
 
-            //EventDates for "Adrian"
-            EventDate ed3 = new EventDate(3,
-                new TimeSpan(14, 0, 0), new TimeSpan(14, 30, 0), 1, 2, true);
-            EventDate ed4 = new EventDate(4,
-                new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0), 2, 1, true);
-            EventDate ed42 = new EventDate(4,
-                new TimeSpan(15, 0, 0), new TimeSpan(17, 0, 0), 4, 2, false);
-            EventDate ed5 = new EventDate(5,
-                new TimeSpan(9, 0, 0), new TimeSpan(11, 30, 0), 5, 0, true);
+            TimeSpan ed1_S = new TimeSpan(8, 0, 0);
+            TimeSpan ed1_E = new TimeSpan(11, 30, 0);
 
-            //add dates to list
-            List<EventDate> dates0 = new List<EventDate>
-            {
-                ed0
-            };
-            List<EventDate> dates1 = new List<EventDate>
-            {
-                ed1,
-                ed12
-            };
-            List<EventDate> dates2 = new List<EventDate>
-            {
-                ed2
-            };
-
-            List<EventDate> dates3 = new List<EventDate>
-            {
-                ed3
-            };
-            List<EventDate> dates4 = new List<EventDate>
-            {
-                ed4,
-                ed42
-            };
-            List<EventDate> dates5 = new List<EventDate>
-            {
-               ed5
-            };
+            TimeSpan ed2_S = new TimeSpan(12, 0, 0);
+            TimeSpan ed2_E = new TimeSpan(14, 0, 0);
 
 
             //Events for Gergely
             this.AddEvent(new Event(
                 0, Users[0], "Temalabor", "AUT tanszék témalabora","QB202",
-                1, category2, dates0
+                1, category2, ed0_S, ed0_E,1,1
                 ));
             this.AddEvent(new Event(
                 1, Users[0], "Mobil", "Mobil és webes szoftverek", "IB28",
-                3, category2, dates1
+                3, category1, ed1_S, ed1_E, 3, 0
                 ));
             this.AddEvent(new Event(
                 2, Users[0], "Szoftvertechnika", "Sznikák cimű tárgy", "Q1",
-                2, category2, dates2
+                2, category3, ed2_S, ed2_E, 5, 2
                 ));
 
             //Events for Adrian
             this.AddEvent(new Event(
                 3, Users[1], "Temalabor", "AUT tanszék témalabora", "QB202",
-                1, category2, dates3
+                1, category1, ed0_S, ed0_E, 1, 1
                 ));
             this.AddEvent(new Event(
                 4, Users[1], "Mobil", "Mobil és webes szoftverek", "IB28",
-                3, category2, dates4
+                3, category3, ed1_S, ed1_E, 3, 0
                 ));
             this.AddEvent(new Event(
                 5, Users[1], "Szoftvertechnika", "Sznikák cimű tárgy", "Q1",
-                2, category2, dates5
+                2, category2, ed2_S, ed2_E, 5, 2
                 ));
 
         }

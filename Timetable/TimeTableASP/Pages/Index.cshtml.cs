@@ -17,23 +17,21 @@ namespace TimeTableASP.Pages
 {
     public class TimeTableModel : PageModel
     {
-        private readonly ICalendarService _icalendarService;
-        private readonly ILogger _logger;
+        private readonly ICalendarService _ics;
 
         public static int weekParity = 0;
 
         public Dictionary<int,Event> events = new Dictionary<int, Event>();
 
-        public TimeTableModel(ICalendarService icalendarService, ILogger<TimeTableModel> logger) {
+        public TimeTableModel(ICalendarService icalendarService) {
 
-            _icalendarService = icalendarService;
-            _logger = logger;
+            _ics = icalendarService;
             
         }
 
-        public void OnGet()//az oldal szükséges állapotának inícializálása
+        public void OnGet()
         {
-            List<Event> localevents = _icalendarService.ListEvents("Adrian");
+            List<Event> localevents = _ics.ListEvents("Adrian");
             
             if (weekParity == 0)
                 weekParity = 1;
@@ -45,11 +43,10 @@ namespace TimeTableASP.Pages
             #region OrderDays    
             foreach (Event e in localevents)
             {
-                foreach (EventDate ed in e.EventDates)
-                {
-                    if (ed.ChoosenEvent == true && (ed.Parity == weekParity || ed.Parity == 0))
+               
+                    if ( e.Parity == weekParity || e.Parity == 0)
                     {
-                        switch (ed.Day)
+                        switch (e.Day)
                         {
                             case 1:
                                 events.Add(1, e);
@@ -76,20 +73,8 @@ namespace TimeTableASP.Pages
                                 throw new Exception("Nem megfelelő a Nap értéke, csak 1 és 7 közötti érték értelmezhető!");
                         }
                     }
-                }
             }
             #endregion
-        }
-
-        public List<string> GetDailyEvents(string day) {
-
-            List<string> strlist = new List<string>();
-
-            foreach (KeyValuePair<int, Event> kv in events)
-                if (kv.Key.Equals(day))
-                    strlist.Add(kv.Value.ToString());
-
-            return strlist;
         }
 
         public string RenderTableElement(int day, TimeSpan time) {
@@ -98,10 +83,8 @@ namespace TimeTableASP.Pages
 
             foreach (KeyValuePair<int, Event> kv in events) {
 
-                TimeSpan CurrentEventStartDate = kv.Value.GetValidEventDate().StartDate;
-
-                if (kv.Key.Equals(day) && CurrentEventStartDate.Equals(time))
-                    tableElementString = kv.Value.ToString();
+                if (kv.Key.Equals(day) && kv.Value.StartDate.Equals(time))
+                    tableElementString = "Lecture: "+kv.Value.EventName +"   Location: "+ kv.Value.Location;
             }
 
             return tableElementString;
@@ -113,13 +96,11 @@ namespace TimeTableASP.Pages
             foreach (KeyValuePair<int, Event> kv in events)
             {
 
-                TimeSpan CurrentEventStartDate = kv.Value.GetValidEventDate().StartDate;
-                TimeSpan CurrentEventEndDate = kv.Value.GetValidEventDate().EndDate;
-                TimeSpan Diff = new TimeSpan(CurrentEventEndDate.Hours - CurrentEventStartDate.Hours
-                                            ,CurrentEventEndDate.Minutes - CurrentEventStartDate.Minutes
+                TimeSpan Diff = new TimeSpan(kv.Value.EndDate.Hours - kv.Value.StartDate.Hours
+                                            ,kv.Value.EndDate.Minutes - kv.Value.StartDate.Minutes
                                             , 0);
 
-                if (kv.Key.Equals(day) && CurrentEventStartDate.Equals(time))
+                if (kv.Key.Equals(day) && kv.Value.StartDate.Equals(time))
                 {
                    
                         rowSize = Diff.Hours * 2 + Diff.Minutes / 30;
@@ -129,6 +110,35 @@ namespace TimeTableASP.Pages
             }
 
             return rowSize.ToString();
+        }
+
+        public string GetCategoryColor(int day, TimeSpan time) {
+
+            string color = "white";
+
+            foreach (KeyValuePair<int, Event> kv in events)
+            {
+
+
+                if (kv.Key.Equals(day) && kv.Value.StartDate.Equals(time)) {
+                    switch (kv.Value.Category.Colour) {
+                        case 0:
+                            color = "red";
+                            break;
+                        case 1:
+                            color = "green";
+                            break;
+                        case 2:
+                            color = "yellow";
+                            break;
+                        default:
+                            color = "white";
+                            break;
+                    }
+                }
+            }
+
+            return color;
         }
     }
 }
