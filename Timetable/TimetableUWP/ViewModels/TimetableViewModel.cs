@@ -3,12 +3,9 @@
 using TimetableUWP.Helpers;
 using TimetableInterfaces.Models;
 using TimetableMockService.Factory;
-using TimetableMockService.MockServices;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
 using TimetableUWP.Command;
 using TimetableInterfaces.Interfaces;
-using Windows.UI.Xaml.Controls;
 using TimetableUWP.Views;
 using Windows.UI.Popups;
 
@@ -18,7 +15,7 @@ namespace TimetableUWP.ViewModels
     {
         public ICalendarService Cs { get; }
 
-        public String Username { get; set; }
+        public string Username { get; set; }
 
         public ObservableCollection<Event> TimetableEvents { get; set; }
 
@@ -30,11 +27,12 @@ namespace TimetableUWP.ViewModels
         public ObservableCollection<Event> Saturday { get; set; }
         public ObservableCollection<Event> Sunday { get; set; }
 
-        public TimetableModelViewCommand AddCommand { get; }
-        public TimetableModelViewCommand DeleteCommand { get; }
-        public TimetableModelViewCommand LoginCommand { get; }
+        public TimetableCommand AddCommand { get; }
+        public TimetableCommand DeleteCommand { get; }
+        public TimetableCommand LoginCommand { get; }
 
-        private int temporaryIdCounter = 3;
+        private int idCounter = 1000;
+        private bool isLoggedIn = false;
 
         public TimetableViewModel()
         {
@@ -51,13 +49,13 @@ namespace TimetableUWP.ViewModels
             Saturday = new ObservableCollection<Event>();
             Sunday = new ObservableCollection<Event>();
 
-            AddCommand = new TimetableModelViewCommand(this.AddEvent, this.IsNoMoreThanTwenty);
-            DeleteCommand = new TimetableModelViewCommand(this.DeleteEvent, this.IsTimetableEmpty);
-            LoginCommand = new TimetableModelViewCommand(this.Login, () => true);
+            AddCommand = new TimetableCommand(this.AddEvent, this.CanAddEvent);
+            DeleteCommand = new TimetableCommand(this.DeleteEvent, this.IsTimetableEmpty);
+            LoginCommand = new TimetableCommand(this.Login, () => true);
         }
-        private bool IsNoMoreThanTwenty()
+        private bool CanAddEvent()
         {
-            if(TimetableEvents.Count >= 20)
+            if(TimetableEvents.Count >= 20 || !isLoggedIn)
             {
                 return false;
             }
@@ -78,38 +76,40 @@ namespace TimetableUWP.ViewModels
             TimetableEvents.Clear();
             ClearEventArrays();
 
-            if (Username == null)
+            if (Username == "Gergely")
             {
-                Alert("No username given");
-            }
-            else if (Username == "Gergely")
-            {
-                //login not properly implemented yet (logins automatically)
+                //logins automatically
                 Cs.UserLogin(Username, "pw123");
+                isLoggedIn = true;
 
                 ObservableCollection<Event> temp = new ObservableCollection<Event>(Cs.ListEvents(Username));
                 foreach(Event e in temp)
                 {
                     TimetableEvents.Add(e);
                 }
-                SortEventsIntoDays();
+                SortEvents();
             }
             else if (Username == "Adrian")
             {
                 //logins automatically
                 Cs.UserLogin(Username, "pw789");
+                isLoggedIn = true;
 
                 ObservableCollection<Event> temp = new ObservableCollection<Event>(Cs.ListEvents(Username));
                 foreach (Event e in temp)
                 {
                     TimetableEvents.Add(e);
                 }
-                SortEventsIntoDays();
+                SortEvents();
             }
             else
             {
-                Alert("Wrong username!");
+                Alert("Invalid username!");
+                isLoggedIn = false;
             }
+
+            DeleteCommand.Update();
+            AddCommand.Update();
         }
 
         private void ClearEventArrays()
@@ -123,7 +123,7 @@ namespace TimetableUWP.ViewModels
             Sunday.Clear();
         }
 
-        public void SortEventsIntoDays()
+        public void SortEvents()
         {
             ClearEventArrays();
 
@@ -163,15 +163,19 @@ namespace TimetableUWP.ViewModels
 
         private async void DisplayNewEventDialog()
         {
-            var dialog = new CreateNewEventDialog(this, Username, temporaryIdCounter++);
+            var dialog = new CreateNewEventDialog(this, Username, idCounter++);
             await dialog.ShowAsync();
         }
 
         public void DeleteEvent()
         {
-            Cs.DeleteEvent(temporaryIdCounter-1);
-            temporaryIdCounter--;
-            TimetableEvents.RemoveAt(TimetableEvents.Count - 1);
+            DisplayDeleteEventDialog();
+        }
+
+        private async void DisplayDeleteEventDialog()
+        {
+            var dialog = new DeleteEventDialog(this, Username);
+            await dialog.ShowAsync();
         }
 
         public async void Alert(String message)

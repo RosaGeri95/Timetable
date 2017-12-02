@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace TimetableUWP.Command
 {
-    public class TimetableModelViewCommand : ICommand
+    public class TimetableCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
         private Action ExecuteFunction;
         private Func<bool> CanFunctionExecute;
 
-        public TimetableModelViewCommand(Action action, Func<bool> predicate)
+        public TimetableCommand(Action action, Func<bool> predicate)
         {
             ExecuteFunction = action;
             CanFunctionExecute = predicate;
@@ -28,6 +24,11 @@ namespace TimetableUWP.Command
         public void Execute(object parameter)
         {
             ExecuteFunction();
+        }
+
+        public void Update()
+        {
+            CanExecuteChanged.Invoke(this, EventArgs.Empty);
         }
     }
 }

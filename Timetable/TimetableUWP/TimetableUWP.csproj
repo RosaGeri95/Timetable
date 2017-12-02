@@ -111,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
-    <Compile Include="Command\TimetableModelViewCommand.cs" />
+    <Compile Include="Command\TimetableCommand.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\Observable.cs" />
@@ -131,6 +131,9 @@
     <Compile Include="ViewModels\TimetableViewModel.cs" />
     <Compile Include="Views\CreateNewEventDialog.xaml.cs">
       <DependentUpon>CreateNewEventDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeleteEventDialog.xaml.cs">
+      <DependentUpon>DeleteEventDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -173,6 +176,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\CreateNewEventDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeleteEventDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
