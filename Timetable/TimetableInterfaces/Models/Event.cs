@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimetableInterfaces.Models
 {
-    [Table("Termek")]
+    //[Table("Termek")]
     public class Event
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EventId { get; set; }
         public User EventOwner { get; set; }
         public string EventName { get; set; }
@@ -21,6 +21,13 @@ namespace TimetableInterfaces.Models
         public int Day { get; set; }
         public TimeSpan StartDate { get; set; }
         public TimeSpan EndDate { get; set; }
+
+        public Event() {
+            EventOwner = new User("NULL","PASS",new DateTime());
+            Category = new Category();
+            StartDate = new TimeSpan(8, 0, 0);
+            EndDate = new TimeSpan(8, 30, 0);
+        }
 
         public Event(int eventID, User owner, string eventName, string desc, string loc, int priority,
             Category cat, TimeSpan startDate, TimeSpan endDate, int day, int parity)
