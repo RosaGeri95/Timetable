@@ -48,15 +48,12 @@ namespace TimetableUWP.Views
                     parity = 2;
                 }
 
-                EventDate ed = new EventDate(eventID,
-                    tpStartTime.Time, tpEndTime.Time, cbDays.SelectedIndex + 1, parity, true);
-                List<EventDate> dates = new List<EventDate>
-            {
-                ed
-            };
+                TimeSpan st = tpStartTime.Time;
+                TimeSpan et = tpEndTime.Time;
+
                 Event e = new Event(
                      eventID, tvm.Cs.GetUser(username), tbName.Text, tbDescription.Text, tbLocation.Text,
-                     cbPriority.SelectedIndex + 1, category, dates
+                     cbPriority.SelectedIndex + 1, category, st, et, cbDays.SelectedIndex + 1, parity
                      );
 
                 tvm.Cs.AddEvent(e);

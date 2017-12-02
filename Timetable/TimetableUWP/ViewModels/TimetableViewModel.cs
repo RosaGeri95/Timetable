@@ -129,7 +129,7 @@ namespace TimetableUWP.ViewModels
 
             foreach(Event e in TimetableEvents)
             {
-                switch(e.GetValidEventDate().Day)
+                switch(e.Day)
                 {
                     case 1:
                         Monday.Add(e);

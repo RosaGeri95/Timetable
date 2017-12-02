@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableUWP", "TimetableUWP\TimetableUWP.csproj", "{5B97F457-665D-457C-9F73-7C6516060B2B}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableMockService", "TimetableMockService\TimetableMockService.csproj", "{5A8D8F0A-F822-418F-A782-E531E19C22B1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableService", "TimetableService\TimetableService.csproj", "{BD411F8D-1408-4976-BD94-F82293AA89E9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teszt", "Teszt\Teszt.csproj", "{A49F8355-DE58-4BC5-BACC-B3DD8548D856}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTableASP", "TimeTableASP\TimeTableASP.csproj", "{46B1BDFF-4647-4891-B07E-E7ECE20D25EB}"
 EndProject
@@ -95,22 +93,6 @@ Global
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Release|x64.Build.0 = Release|Any CPU
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Release|x86.Build.0 = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|ARM.Build.0 = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|x64.Build.0 = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Debug|x86.Build.0 = Debug|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|ARM.ActiveCfg = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|ARM.Build.0 = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|x64.ActiveCfg = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|x64.Build.0 = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|x86.ActiveCfg = Release|Any CPU
-		{A49F8355-DE58-4BC5-BACC-B3DD8548D856}.Release|x86.Build.0 = Release|Any CPU
 		{46B1BDFF-4647-4891-B07E-E7ECE20D25EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46B1BDFF-4647-4891-B07E-E7ECE20D25EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46B1BDFF-4647-4891-B07E-E7ECE20D25EB}.Debug|ARM.ActiveCfg = Debug|Any CPU
