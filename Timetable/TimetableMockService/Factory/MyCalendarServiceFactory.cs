@@ -16,7 +16,7 @@ namespace TimetableMockService.Factory
             {
 
                 case "MCS":
-                    return new MockCalendarService();
+                    return  new MockCalendarService();//TODO: Ezt vissza kell írni sima new-ra 
                 case "CS":
                     return new CalendarService();
                 default:

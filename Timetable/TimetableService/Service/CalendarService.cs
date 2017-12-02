@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TimetableInterfaces.Interfaces;
@@ -8,11 +9,12 @@ namespace TimetableService.Service
 {
     public class CalendarService : ICalendarService
     {
-        public CalendarService()
+        public CalendarService()//ebbe kerülnek majd a dbcontext hívások
         {
+            
         }
 
-        public bool AddEvent(Event e)
+        public bool AddEvent(Event e)//direktbe példányosítani a DBcontext-et (using var dbcontext = new DBCONText ), ha megoldható
         {
             throw new NotImplementedException();
         }

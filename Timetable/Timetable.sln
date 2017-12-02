@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableUWP", "TimetableUWP\TimetableUWP.csproj", "{5B97F457-665D-457C-9F73-7C6516060B2B}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableService", "Timetab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teszt", "Teszt\Teszt.csproj", "{A49F8355-DE58-4BC5-BACC-B3DD8548D856}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTableASP", "TimeTableASP\TimeTableASP.csproj", "{46B1BDFF-4647-4891-B07E-E7ECE20D25EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTableASP", "TimeTableASP\TimeTableASP.csproj", "{46B1BDFF-4647-4891-B07E-E7ECE20D25EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -74,13 +74,20 @@
 
                     <tr>
                         <td rowspan="1">@time.ToString()</td><!-- Fél órás idősávok -->
-                        <td rowspan=@Model.getElementRowSize(1, time)>@Model.RenderTableElement(1,time)</td><!-- Hétfő -->
-                        <td rowspan=@Model.getElementRowSize(2, time)>@Model.RenderTableElement(2, time)</td><!-- Kedd -->
-                        <td rowspan=@Model.getElementRowSize(3, time)>@Model.RenderTableElement(3, time)</td><!-- Szerda -->
-                        <td rowspan=@Model.getElementRowSize(4, time)>@Model.RenderTableElement(4, time)</td><!-- Csütörtök -->
-                        <td rowspan=@Model.getElementRowSize(5, time)>@Model.RenderTableElement(5, time)</td><!-- Péntek -->
-                        <td rowspan=@Model.getElementRowSize(6, time)>@Model.RenderTableElement(6, time)</td><!-- Szombat -->
-                        <td rowspan=@Model.getElementRowSize(7, time)>@Model.RenderTableElement(7, time)</td><!-- Vasárnap -->
+                        <td style="background-color:@Model.GetCategoryColor(1,time)" 
+                            rowspan=@Model.getElementRowSize(1, time)>@Model.RenderTableElement(1,time)</td><!-- Hétfő -->
+                        <td style="background-color:@Model.GetCategoryColor(2, time)" 
+                            rowspan=@Model.getElementRowSize(2, time)>@Model.RenderTableElement(2, time)</td><!-- Kedd -->
+                        <td style="background-color:@Model.GetCategoryColor(3, time)" 
+                            rowspan=@Model.getElementRowSize(3, time)>@Model.RenderTableElement(3, time)</td><!-- Szerda -->
+                        <td style="background-color:@Model.GetCategoryColor(4, time)" 
+                            rowspan=@Model.getElementRowSize(4, time)>@Model.RenderTableElement(4, time)</td><!-- Csütörtök -->
+                        <td style="background-color:@Model.GetCategoryColor(5, time)" 
+                            rowspan=@Model.getElementRowSize(5, time)>@Model.RenderTableElement(5, time)</td><!-- Péntek -->
+                        <td style="background-color:@Model.GetCategoryColor(6, time)" 
+                            rowspan=@Model.getElementRowSize(6, time)>@Model.RenderTableElement(6, time)</td><!-- Szombat -->
+                        <td style="background-color:@Model.GetCategoryColor(7, time)" 
+                            rowspan=@Model.getElementRowSize(7, time)>@Model.RenderTableElement(7, time)</td><!-- Vasárnap -->
                     </tr>
                 }
                 
