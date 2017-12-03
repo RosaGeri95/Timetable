@@ -37,6 +37,7 @@ namespace TimetableUWP.Views
 
                 tvm.SortEvents();
                 tvm.DeleteCommand.Update();
+                tvm.AddCommand.Update();
             }
             catch(Exception e)
             {
