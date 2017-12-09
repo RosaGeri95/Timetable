@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableUWP", "TimetableUWP\TimetableUWP.csproj", "{5B97F457-665D-457C-9F73-7C6516060B2B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableInterfaces", "TimetableInterfaces\TimetableInterfaces.csproj", "{4217C3A9-9D49-4E62-97B2-E468502783B3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableMockService", "TimetableMockService\TimetableMockService.csproj", "{5A8D8F0A-F822-418F-A782-E531E19C22B1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableService", "TimetableService\TimetableService.csproj", "{BD411F8D-1408-4976-BD94-F82293AA89E9}"
 EndProject
@@ -25,26 +21,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|ARM.ActiveCfg = Debug|ARM
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|ARM.Build.0 = Debug|ARM
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|ARM.Deploy.0 = Debug|ARM
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|x64.ActiveCfg = Debug|x64
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|x64.Build.0 = Debug|x64
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|x64.Deploy.0 = Debug|x64
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|x86.ActiveCfg = Debug|x86
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|x86.Build.0 = Debug|x86
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Debug|x86.Deploy.0 = Debug|x86
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|Any CPU.ActiveCfg = Release|x86
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|ARM.ActiveCfg = Release|ARM
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|ARM.Build.0 = Release|ARM
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|ARM.Deploy.0 = Release|ARM
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|x64.ActiveCfg = Release|x64
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|x64.Build.0 = Release|x64
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|x64.Deploy.0 = Release|x64
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|x86.ActiveCfg = Release|x86
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|x86.Build.0 = Release|x86
-		{5B97F457-665D-457C-9F73-7C6516060B2B}.Release|x86.Deploy.0 = Release|x86
 		{4217C3A9-9D49-4E62-97B2-E468502783B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4217C3A9-9D49-4E62-97B2-E468502783B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4217C3A9-9D49-4E62-97B2-E468502783B3}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -61,22 +37,6 @@ Global
 		{4217C3A9-9D49-4E62-97B2-E468502783B3}.Release|x64.Build.0 = Release|Any CPU
 		{4217C3A9-9D49-4E62-97B2-E468502783B3}.Release|x86.ActiveCfg = Release|Any CPU
 		{4217C3A9-9D49-4E62-97B2-E468502783B3}.Release|x86.Build.0 = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|ARM.Build.0 = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|x64.Build.0 = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Debug|x86.Build.0 = Debug|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|ARM.ActiveCfg = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|ARM.Build.0 = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|x64.ActiveCfg = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|x64.Build.0 = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|x86.ActiveCfg = Release|Any CPU
-		{5A8D8F0A-F822-418F-A782-E531E19C22B1}.Release|x86.Build.0 = Release|Any CPU
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD411F8D-1408-4976-BD94-F82293AA89E9}.Debug|ARM.ActiveCfg = Debug|Any CPU

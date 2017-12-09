@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TimetableInterfaces.Interfaces;
 using TimetableInterfaces.Models;
-using Microsoft.Extensions.Logging;
 
 namespace TimeTableASP.Pages
 {

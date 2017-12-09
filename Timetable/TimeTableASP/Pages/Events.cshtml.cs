@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TimetableInterfaces.Models;
 using TimetableInterfaces.Interfaces;
@@ -18,7 +15,7 @@ namespace TimeTableASP.Pages
             _ics = ics;
         }
 
-        public IList<Event> Event { get; set; }
+        public List<Event> Event { get; set; }
 
         public void OnGet()
         {

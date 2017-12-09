@@ -1,14 +1,10 @@
-    using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TimetableInterfaces.Models;
 using TimetableInterfaces.Interfaces;
-using TimetableMockService.MockServices;
+using Microsoft.EntityFrameworkCore;
+using TimetableService.Service;
 
 namespace TimeTableASP
 {
@@ -26,7 +22,8 @@ namespace TimeTableASP
         {
             services.AddMvc();
             services.AddLogging();
-            services.AddTransient<ICalendarService, MockCalendarService>();//DI-hez kell, ezt kell majd átírni CalendarService-re ha az kész
+            services.AddDbContext<TimeTableContext>(options=> options.UseSqlServer(Configuration.GetConnectionString("TimeTableContext")));
+            services.AddTransient<ICalendarService, CalendarService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

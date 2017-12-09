@@ -74,9 +74,9 @@
                     @Html.DisplayFor(modelItem => item.Day)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.EventId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.EventId">Details</a> |
-                    <a asp-page="./DeleteEvent" asp-route-id="@item.EventId">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./DeleteEvent" asp-route-id="@item.ID">Delete</a>
                 </td>
             </tr>
         }

@@ -7,9 +7,9 @@ namespace TimetableInterfaces.Interfaces
 {
     public interface ICalendarService
     {
-        List<Event> ListEvents(string userName); //az adott felhasználó összes event-jét visszaadja
+        List<Event> ListEvents(string UserName); //az adott felhasználó összes event-jét visszaadja
 
-        bool AddEvent(Event e); // A felhasználó felvehet eseményt
+        bool AddEvent(Event e,string UserName,string Category); // A felhasználó felvehet eseményt
 
         bool ModifyEvent(Event e); // Adott eseményt felülír
 

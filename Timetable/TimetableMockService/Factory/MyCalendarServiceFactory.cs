@@ -16,9 +16,9 @@ namespace TimetableMockService.Factory
             {
 
                 case "MCS":
-                    return  new MockCalendarService();//TODO: Ezt vissza kell írni sima new-ra 
+                    return null;//new MockCalendarService();//TODO: Ezt vissza kell írni sima new-ra 
                 case "CS":
-                    return new CalendarService();
+                    return null;//new CalendarService();
                 default:
                     throw new Exception(string.Format("Calendar service '{0}' cannot be created", type));
 

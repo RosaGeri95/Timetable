@@ -7,7 +7,7 @@ using TimetableInterfaces.Models;
 
 namespace TimetableMockService.MockServices
 {
-    public class MockCalendarService : ICalendarService
+    public class MockCalendarService //: ICalendarService
     {
         public List<Event> Events { get; }
         public List<User> Users { get;  }
@@ -19,10 +19,10 @@ namespace TimetableMockService.MockServices
             Events = new List<Event>();
             Users = new List<User>();
 
-            FillCalendarWithDummyEvents();
+            //FillCalendarWithDummyEvents();
 
         }
-
+        /*
         private void FillCalendarWithDummyEvents()
         {
             //Users
@@ -76,7 +76,7 @@ namespace TimetableMockService.MockServices
                 2, category2, ed2_S, ed2_E, 5, 2
                 ));
 
-        }
+        }*/
 
         public bool AddEvent(Event e)
         {
@@ -101,7 +101,7 @@ namespace TimetableMockService.MockServices
 
         public bool DeleteEvent(int event_id)
         {
-            int deletedItems = Events.RemoveAll(x => (x.EventId == event_id) );
+            int deletedItems = Events.RemoveAll(x => (x.ID == event_id) );
             if(deletedItems > 0)
             {
                 return true;
@@ -146,14 +146,14 @@ namespace TimetableMockService.MockServices
             int found = 0;
             foreach(Event esemeny in Events)
             {
-                if(esemeny.EventId == e.EventId)
+                if(esemeny.ID == e.ID)
                 {
                     found++;
                 }
             }
             if(found == 0) { return false; }
 
-            Event evt = Events.First(x => (x.EventId == e.EventId));
+            Event evt = Events.First(x => (x.ID == e.ID));
             var index = Events.IndexOf(evt);
 
             if(index != -1)
@@ -216,7 +216,7 @@ namespace TimetableMockService.MockServices
         {
             foreach(Event e in Events)
             {
-                if(e.EventId == event_id)
+                if(e.ID == event_id)
                 {
                     return e;
                 }

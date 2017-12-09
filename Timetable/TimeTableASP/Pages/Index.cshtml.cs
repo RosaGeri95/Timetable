@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TimetableMockService.Factory;
-using TimetableMockService.MockServices;
 using TimetableInterfaces.Interfaces;
 using TimetableInterfaces.Models;
-using System.Text;
-using System.Collections;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace TimeTableASP.Pages
 {
@@ -31,7 +22,7 @@ namespace TimeTableASP.Pages
 
         public void OnGet()
         {
-            List<Event> localevents = _ics.ListEvents("Adrian");
+            IList<Event> localevents = _ics.ListEvents("Adrian");
             
             if (weekParity == 0)
                 weekParity = 1;
